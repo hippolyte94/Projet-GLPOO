@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\picar\Documents\ESIEA\Cours\S6\Projet GLPOO\.metadata\.plugins\org.eclipse.jdt.core
