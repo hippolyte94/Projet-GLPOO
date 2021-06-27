@@ -1,6 +1,7 @@
 package musichub.business;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 
 public class Song extends AudioElement {

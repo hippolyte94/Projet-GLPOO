@@ -1,5 +1,12 @@
 package controller;
 
-public class SongController {
- private String name;
+public class SongController  {
+
+
+
+ public void addNewSong(){
+ }
+
+
+
 }

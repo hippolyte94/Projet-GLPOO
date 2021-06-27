@@ -1,10 +1,9 @@
 package musichub.main;
-import musichub.business.*;
-import java.util.*;
 
-import java.beans.XMLEncoder;
-import java.io.FileOutputStream;
-import java.io.BufferedOutputStream;
+import musichub.business.*;
+
+import java.util.Iterator;
+import java.util.Scanner;
 	
 public class Main
 {
@@ -17,7 +16,7 @@ public class Main
 		
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
-		
+		String test;
 		String albumTitle = null;
 		
 		if (choice.length() == 0) System.exit(0);						
@@ -130,9 +129,7 @@ public class Main
 					String titleAlbum = scan.nextLine();
 					try {
 						theHub.addElementToAlbum(songTitle, titleAlbum);
-					} catch (NoAlbumFoundException ex){
-						System.out.println (ex.getMessage());
-					} catch (NoElementFoundException ex){
+					} catch (NoAlbumFoundException | NoElementFoundException ex){
 						System.out.println (ex.getMessage());
 					}
 					System.out.println("Song added to the album!");
