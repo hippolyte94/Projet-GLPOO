@@ -1,8 +1,13 @@
 package musichub.business;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
-import org.w3c.dom.*;
-import java.text.*;
 
 
 
@@ -33,6 +38,7 @@ public class Album {
 		this.artist = artist;
 		this.lengthInSeconds = lengthInSeconds;
 		this.uuid = UUID.randomUUID();
+
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			this.date = sdf.parse(date);
