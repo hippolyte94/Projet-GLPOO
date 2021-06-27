@@ -12,7 +12,7 @@ public abstract class GeneralView {
         choice = scan.nextLine();
     }
 
-    protected void printAvailableCommands() {
+    public void printAvailableCommands() {
         System.out.println("t: display the album titles, ordered by date");
         System.out.println("g: display songs of an album, ordered by genre");
         System.out.println("d: display songs of an album");
