@@ -10,6 +10,8 @@ import java.util.Scanner;
 public class SongView extends GeneralView {
 
     Scanner scan = new Scanner(System.in);
+    //String choice = scan.nextLine();
+    //MusicHub theHub = new MusicHub();
 
     public String[] getSongInformation(){
         String[] returnTab;

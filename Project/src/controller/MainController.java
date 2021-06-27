@@ -1,10 +1,7 @@
 package controller;
 
 import musichub.business.MusicHub;
+import view.GeneralView;
 
 public class MainController {
-
-    protected MusicHub theHub = new MusicHub();
-
-
 }
