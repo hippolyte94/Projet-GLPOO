@@ -1,5 +1,7 @@
 package controller;
 
-public class MainController {
+import musichub.business.MusicHub;
+import view.GeneralView;
 
+public class MainController {
 }
