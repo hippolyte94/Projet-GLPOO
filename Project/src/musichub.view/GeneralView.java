@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public abstract class GeneralView {
 
-    Scanner scan = new Scanner(System.in);
-    String choice = scan.nextLine();
 
     protected void printHelp() {
+        Scanner scan = new Scanner(System.in);
+
+        String choice = scan.nextLine();
+
         printAvailableCommands();
         choice = scan.nextLine();
     }
@@ -27,6 +29,8 @@ public abstract class GeneralView {
         System.out.println("q: quit program");
     }
 
-    protected abstract void  tellIfAdded(boolean bool);
+    protected void  tellIfAdded(boolean bool){
+        System.out.println("test");
+    }
 
 }

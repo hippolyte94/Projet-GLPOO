@@ -2,7 +2,7 @@ package musichub.model;
 
 import java.util.*;
 import org.w3c.dom.*;
-
+import musichub.logger.*;
 public abstract class AudioElement {
 	protected String  	title;
 	protected String 	artist;
@@ -44,6 +44,8 @@ public abstract class AudioElement {
 				this.uuid = UUID.randomUUID();
 			else this.uuid = UUID.fromString(uuid);
 		} catch (Exception ex) {
+			Logging.fatal("Error occured : " + ex.getMessage());
+
 			throw ex;
 		}
 	}

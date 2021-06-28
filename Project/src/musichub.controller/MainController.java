@@ -6,6 +6,7 @@ import musichub.model.MusicHub;
 import musichub.view.AlbumView;
 import musichub.view.AudioBookView;
 import musichub.view.GeneralView;
+import musichub.logger.*;
 
 public class MainController {
 
@@ -15,6 +16,8 @@ public class MainController {
 	private SongController songCont;
 	private GeneralView generalView;
 	private MusicHub theHub;
+	private Logging logger;
+
 
 	public MainController() {
 		this.theHub = new MusicHub();
@@ -22,7 +25,14 @@ public class MainController {
 		this.audioBookCont = new AudioBookController(theHub);
 		this.playListCont = new PlayListController(theHub);
 		this.songCont = new SongController(theHub); // rajouter music hub
+		this.generalView = new GeneralView() {
 
+			@Override
+			protected void tellIfAdded(boolean bool) {
+
+			}
+		};
+		logger = new Logging();
 	}
 
 	public void launch() {
@@ -31,60 +41,80 @@ public class MainController {
 		String choice = scan.nextLine();
 
 		while (choice.charAt(0) != 'q') {
-			choice = scan.nextLine();
+
 			switch (choice.charAt(0)) {
 			
 			case 'h':
+				Logging.log("Choose h Option");
 				generalView.printAvailableCommands();
 				break;
 			case 't':
 				// album titles, ordered by date
+				Logging.log("Choose t Option");
 				System.out.println(theHub.getAlbumsTitlesSortedByDate());
 				generalView.printAvailableCommands();
-				choice = scan.nextLine();
 				break;
 			case 'g':
 				// songs of an album, sorted by genre
+				Logging.log("Choose g Option");
 				albumCont.displayAlbumSongOrderedBygenre();
 				break;
-			case 'd':
+				case 'd':
+				Logging.log("Choose d Option");
 				albumCont.displayAllSong();
 				break;
 			case 'u':
+				Logging.log("Choose u Option");
 				audioBookCont.displayAudioBookOrderedByGenre();
 				break;
 			case 'b':
+				Logging.log("Choose b Option");
 				theHub.getAlbumsTitlesSortedByArtists();
 				break;
 			case 'c':
+				Logging.log("Choose c Option");
 				songCont.addNewSong();
 				break;
 			case 'a':
+				Logging.log("Choose a Option");
 				albumCont.addNewAlbum();
 				break;
 			case '+':
+				Logging.log("Choose + Option");
 				albumCont.addSongToAalbum();
 				break;
 			case 'l':
+				Logging.log("Choose l Option");
 				audioBookCont.addNewAudioBook();
 				break;
 			case 'p':
+				Logging.log("Choose p Option");
 				playListCont.createNewPlaylist();
 				break;
 			case '-':
+				Logging.log("Choose - Option");
+
 				playListCont.deletePlaylist();
 				break;
 			case 'x':
+				Logging.log("Choose x Option");
+
 				albumCont.deleteAlbum();
 				break;
 
 			case 's':
+				Logging.log("Choose s Option");
+
 				// generalView.save();
 				break;
 			default:
 				break;
 			}
+			choice = scan.nextLine();
 		}
+		System.out.println("test");
+		Logging.log("Choose q Option");
+		Logging.log("Exit Program : Status 0");
 		scan.close();
 	}
 

@@ -3,6 +3,7 @@ package musichub.model;
 import java.util.*;
 import musichub.main.util.XMLHandler;
 import org.w3c.dom.*;
+import musichub.logger.*;
 
 class SortByDate implements Comparator<Album> {
 	public int compare(Album a1, Album a2) {
@@ -277,6 +278,8 @@ public class MusicHub {
 					try {
 						this.addAlbum(new Album(albumElement));
 					} catch (Exception ex) {
+						Logging.fatal("Error occured : " + ex.getMessage());
+
 						System.out.println("Something is wrong with the XML album element");
 					}
 				}
@@ -296,6 +299,8 @@ public class MusicHub {
 					try {
 						this.addPlaylist(new PlayList(playlistElement));
 					} catch (Exception ex) {
+						Logging.fatal("Error occured : " + ex.getMessage());
+
 						System.out.println("Something is wrong with the XML playlist element");
 					}
 				}
@@ -316,6 +321,8 @@ public class MusicHub {
 						AudioElement newSong = new Song(audioElement);
 						this.addElement(newSong);
 					} catch (Exception ex) {
+						Logging.fatal("Error occured : " + ex.getMessage());
+
 						System.out.println("Something is wrong with the XML song element");
 					}
 				}
@@ -324,6 +331,8 @@ public class MusicHub {
 						AudioElement newAudioBook = new AudioBook(audioElement);
 						this.addElement(newAudioBook);
 					} catch (Exception ex) {
+						Logging.fatal("Error occured : " + ex.getMessage());
+
 						System.out.println("Something is wrong with the XML audiobook element");
 					}
 				}

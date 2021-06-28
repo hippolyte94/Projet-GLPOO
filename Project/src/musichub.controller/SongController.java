@@ -3,20 +3,25 @@ package musichub.controller;
 import musichub.model.MusicHub;
 import musichub.model.Song;
 import musichub.view.SongView;
+import musichub.logger.*;
 
 public class SongController  {
 
-    private final MusicHub theHub;
-    private final SongView songView;
+    private MusicHub theHub;
+    private SongView songView;
 
-    public SongController(MusicHub theHub) {
+    public SongController(MusicHub theHub ) {
         this.theHub = theHub;
         songView = new SongView();
     }
 
 
     public void addNewSong(){
+        Logging.log("Adding new Song");
         String[] songValues = songView.getSongInformation();
+        for (int i = 0; i < songValues.length; i++) {
+            Logging.log(songValues[i]);
+        }
         addElementToHub(songValues);
     }
 
