@@ -1,13 +1,8 @@
-package musichub.business;
+package musichub.model;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
+import org.w3c.dom.*;
+import java.text.*;
 
 
 
@@ -17,6 +12,7 @@ public class Album {
 	private int lengthInSeconds;
 	private UUID uuid;
 	private Date date;
+
 	private ArrayList<UUID> songsUIDs;
 
 	public Album (String title, String artist, int lengthInSeconds, String id, String date, ArrayList<UUID> songsUIDs) {
@@ -38,7 +34,6 @@ public class Album {
 		this.artist = artist;
 		this.lengthInSeconds = lengthInSeconds;
 		this.uuid = UUID.randomUUID();
-
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			this.date = sdf.parse(date);
@@ -90,6 +85,10 @@ public class Album {
 	}
 	
 	
+	public int getLengthInSeconds() {
+		return lengthInSeconds;
+	}
+
 	public void addSong (UUID song)
 	{
 		songsUIDs.add(song);
@@ -112,6 +111,10 @@ public class Album {
 	
 	public Date getDate() {
 		return date;
+	}
+	
+	public String getArtist() {
+		return artist;
 	}
 	
 	public void createXMLElement(Document document, Element parentElement)
