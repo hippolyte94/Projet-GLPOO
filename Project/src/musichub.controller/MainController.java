@@ -22,14 +22,7 @@ public class MainController {
 		this.audioBookCont = new AudioBookController(theHub);
 		this.playListCont = new PlayListController(theHub);
 		this.songCont = new SongController(theHub); // rajouter music hub
-		generalView = new GeneralView() {
-			
-			@Override
-			protected void tellIfAdded(boolean bool) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
+
 	}
 
 	public void launch() {

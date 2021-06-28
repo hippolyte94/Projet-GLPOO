@@ -1,6 +1,10 @@
-package view;
+package musichub.view;
 
-import musichub.business.*;
+
+
+import musichub.model.Album;
+import musichub.model.MusicHub;
+import musichub.model.NoAlbumFoundException;
 
 import java.util.Iterator;
 import java.util.Scanner;

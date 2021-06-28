@@ -1,10 +1,12 @@
-package view;
+package musichub.view;
+
+import musichub.model.AudioElement;
+import musichub.model.MusicHub;
 
 import java.util.Iterator;
 import java.util.Scanner;
 
-import musichub.business.AudioElement;
-import musichub.business.MusicHub;
+
 
 public class AudioBookView extends GeneralView{
 

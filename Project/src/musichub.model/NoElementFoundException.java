@@ -1,4 +1,4 @@
-package musichub.business;
+package musichub.model;
 
 import java.lang.Exception;
 
