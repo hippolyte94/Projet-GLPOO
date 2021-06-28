@@ -1,9 +1,7 @@
-package musichub.business;
+package musichub.model;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-import java.util.UUID;
+import java.util.*;
+import org.w3c.dom.*;
 
 public abstract class AudioElement {
 	protected String  	title;

@@ -1,25 +1,28 @@
-package musichub.business;
+package musichub.model;
 
 import java.util.*;
 import musichub.util.*;
 import org.w3c.dom.*;
 
-class SortByDate implements Comparator<Album>
-{
+class SortByDate implements Comparator<Album> {
 	public int compare(Album a1, Album a2) {
 		return a1.getDate().compareTo(a2.getDate());
 	}
 }
 
-class SortByGenre implements Comparator<Song>
-{
+class SortByArtists implements Comparator<Album> {
+	public int compare(Album a1, Album a2) {
+		return a1.getArtist().compareTo(a2.getArtist());
+	}
+}
+
+class SortByGenre implements Comparator<Song> {
 	public int compare(Song s1, Song s2) {
 		return s1.getGenre().compareTo(s2.getGenre());
 	}
 }
 
-class SortByAuthor implements Comparator<AudioElement>
-{
+class SortByAuthor implements Comparator<AudioElement> {
 	public int compare(AudioElement e1, AudioElement e2) {
 		return e1.getArtist().compareTo(e2.getArtist());
 	}
@@ -37,7 +40,7 @@ public class MusicHub {
 
 	private XMLHandler xmlHandler = new XMLHandler();
 
-	public MusicHub () {
+	public MusicHub() {
 		albums = new LinkedList<Album>();
 		playlists = new LinkedList<PlayList>();
 		elements = new LinkedList<AudioElement>();
@@ -46,16 +49,33 @@ public class MusicHub {
 		this.loadPlaylists();
 	}
 
-	public void addElement(AudioElement element) {
-		elements.add(element);
+	public List<PlayList> getPlaylists() {
+		return playlists;
 	}
 
-	public void addAlbum(Album album) {
-		albums.add(album);
+	public boolean addElement(AudioElement element) {
+		if (element != null) {
+			elements.add(element);
+			return true;
+		}
+		return false;
 	}
 
-	public void addPlaylist(PlayList playlist) {
+	public boolean addAlbum(Album album) {
+		if (album != null) {
+			albums.add(album);
+			return true;
+		}
+		return false;
+	}
+
+	public boolean addPlaylist(PlayList playlist) {
+		if (playlist.getTitle().equals("")) {
+			return false;
+		}
 		playlists.add(playlist);
+		return true;
+		
 	}
 
 	public void deletePlayList(String playListTitle) throws NoPlayListFoundException {
@@ -71,7 +91,23 @@ public class MusicHub {
 
 		if (thePlayList != null)
 			result = playlists.remove(thePlayList);
-		if (!result) throw new NoPlayListFoundException("Playlist " + playListTitle + " not found!");
+		if (!result)
+			throw new NoPlayListFoundException("Playlist " + playListTitle + " not found!");
+	}
+
+	public void deleteAlbum(String AlbumTitle) throws NoAlbumFoundException {
+		Album album = null;
+		boolean res = false;
+		for (Album a : albums) {
+			if (a.getTitle().toLowerCase().equals(AlbumTitle.toLowerCase())) {
+				album = a;
+				break;
+			}
+		}
+		if (album != null)
+			res = albums.remove(album);
+		if (!res)
+			throw new NoAlbumFoundException("Album" + AlbumTitle + " not found !");
 	}
 
 	public Iterator<Album> albums() {
@@ -90,7 +126,15 @@ public class MusicHub {
 		StringBuffer titleList = new StringBuffer();
 		Collections.sort(albums, new SortByDate());
 		for (Album al : albums)
-			titleList.append(al.getTitle()+ "\n");
+			titleList.append(al.getTitle() + "\n");
+		return titleList.toString();
+	}
+
+	public String getAlbumsTitlesSortedByArtists() {
+		StringBuffer titleList = new StringBuffer();
+		Collections.sort(albums, new SortByArtists());
+		for (Album al : albums)
+			titleList.append(al.getTitle() + "\n");
 		return titleList.toString();
 	}
 
@@ -102,11 +146,11 @@ public class MusicHub {
 				audioBookList.add(ae);
 		Collections.sort(audioBookList, new SortByAuthor());
 		for (AudioElement ab : audioBookList)
-			titleList.append(ab.getArtist()+ "\n");
+			titleList.append(ab.getArtist() + "\n");
 		return titleList.toString();
 	}
 
-	public List<AudioElement> getAlbumSongs (String albumTitle) throws NoAlbumFoundException {
+	public List<AudioElement> getAlbumSongs(String albumTitle) throws NoAlbumFoundException {
 		Album theAlbum = null;
 		ArrayList<AudioElement> songsInAlbum = new ArrayList<AudioElement>();
 		for (Album al : albums) {
@@ -115,20 +159,22 @@ public class MusicHub {
 				break;
 			}
 		}
-		if (theAlbum == null) throw new NoAlbumFoundException("No album with this title in the MusicHub!");
+		if (theAlbum == null)
+			throw new NoAlbumFoundException("No album with this title in the MusicHub!");
 
 		List<UUID> songIDs = theAlbum.getSongs();
 		for (UUID id : songIDs)
 			for (AudioElement el : elements) {
 				if (el instanceof Song) {
-					if (el.getUUID().equals(id)) songsInAlbum.add(el);
+					if (el.getUUID().equals(id))
+						songsInAlbum.add(el);
 				}
 			}
 		return songsInAlbum;
 
 	}
 
-	public List<Song> getAlbumSongsSortedByGenre (String albumTitle) throws NoAlbumFoundException {
+	public List<Song> getAlbumSongsSortedByGenre(String albumTitle) throws NoAlbumFoundException {
 		Album theAlbum = null;
 		ArrayList<Song> songsInAlbum = new ArrayList<Song>();
 		for (Album al : albums) {
@@ -137,13 +183,15 @@ public class MusicHub {
 				break;
 			}
 		}
-		if (theAlbum == null) throw new NoAlbumFoundException("No album with this title in the MusicHub!");
+		if (theAlbum == null)
+			throw new NoAlbumFoundException("No album with this title in the MusicHub!");
 
 		List<UUID> songIDs = theAlbum.getSongs();
 		for (UUID id : songIDs)
 			for (AudioElement el : elements) {
 				if (el instanceof Song) {
-					if (el.getUUID().equals(id)) songsInAlbum.add((Song)el);
+					if (el.getUUID().equals(id))
+						songsInAlbum.add((Song) el);
 				}
 			}
 		Collections.sort(songsInAlbum, new SortByGenre());
@@ -151,8 +199,8 @@ public class MusicHub {
 
 	}
 
-	public void addElementToAlbum(String elementTitle, String albumTitle) throws NoAlbumFoundException, NoElementFoundException
-	{
+	public void addElementToAlbum(String elementTitle, String albumTitle)
+			throws NoAlbumFoundException, NoElementFoundException {
 		Album theAlbum = null;
 		int i = 0;
 		boolean found = false;
@@ -174,17 +222,17 @@ public class MusicHub {
 			}
 			if (theElement != null) {
 				theAlbum.addSong(theElement.getUUID());
-				//replace the album in the list
-				albums.set(i,theAlbum);
-			}
-			else throw new NoElementFoundException("Element " + elementTitle + " not found!");
-		}
-		else throw new NoAlbumFoundException("Album " + albumTitle + " not found!");
+				// replace the album in the list
+				albums.set(i, theAlbum);
+			} else
+				throw new NoElementFoundException("Element " + elementTitle + " not found!");
+		} else
+			throw new NoAlbumFoundException("Album " + albumTitle + " not found!");
 
 	}
 
-	public void addElementToPlayList(String elementTitle, String playListTitle) throws NoPlayListFoundException, NoElementFoundException
-	{
+	public void addElementToPlayList(String elementTitle, String playListTitle)
+			throws NoPlayListFoundException, NoElementFoundException {
 		PlayList thePlaylist = null;
 		int i = 0;
 		boolean found = false;
@@ -207,88 +255,92 @@ public class MusicHub {
 			}
 			if (theElement != null) {
 				thePlaylist.addElement(theElement.getUUID());
-				//replace the album in the list
-				playlists.set(i,thePlaylist);
-			}
-			else throw new NoElementFoundException("Element " + elementTitle + " not found!");
+				// replace the album in the list
+				playlists.set(i, thePlaylist);
+			} else
+				throw new NoElementFoundException("Element " + elementTitle + " not found!");
 
-		} else throw new NoPlayListFoundException("Playlist " + playListTitle + " not found!");
+		} else
+			throw new NoPlayListFoundException("Playlist " + playListTitle + " not found!");
 
 	}
 
-	private void loadAlbums () {
+	private void loadAlbums() {
 		NodeList albumNodes = xmlHandler.parseXMLFile(ALBUMS_FILE_PATH);
-		if (albumNodes == null) return;
+		if (albumNodes == null)
+			return;
 
 		for (int i = 0; i < albumNodes.getLength(); i++) {
-			if (albumNodes.item(i).getNodeType() == Node.ELEMENT_NODE)   {
+			if (albumNodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
 				Element albumElement = (Element) albumNodes.item(i);
-				if (albumElement.getNodeName().equals("album")) 	{
+				if (albumElement.getNodeName().equals("album")) {
 					try {
-						this.addAlbum(new Album (albumElement));
+						this.addAlbum(new Album(albumElement));
 					} catch (Exception ex) {
-						System.out.println ("Something is wrong with the XML album element");
+						System.out.println("Something is wrong with the XML album element");
 					}
 				}
 			}
 		}
 	}
 
-	private void loadPlaylists () {
+	private void loadPlaylists() {
 		NodeList playlistNodes = xmlHandler.parseXMLFile(PLAYLISTS_FILE_PATH);
-		if (playlistNodes == null) return;
+		if (playlistNodes == null)
+			return;
 
 		for (int i = 0; i < playlistNodes.getLength(); i++) {
-			if (playlistNodes.item(i).getNodeType() == Node.ELEMENT_NODE)   {
+			if (playlistNodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
 				Element playlistElement = (Element) playlistNodes.item(i);
-				if (playlistElement.getNodeName().equals("playlist")) 	{
+				if (playlistElement.getNodeName().equals("playlist")) {
 					try {
-						this.addPlaylist(new PlayList (playlistElement));
+						this.addPlaylist(new PlayList(playlistElement));
 					} catch (Exception ex) {
-						System.out.println ("Something is wrong with the XML playlist element");
+						System.out.println("Something is wrong with the XML playlist element");
 					}
 				}
 			}
 		}
 	}
 
-	private void loadElements () {
+	private void loadElements() {
 		NodeList audioelementsNodes = xmlHandler.parseXMLFile(ELEMENTS_FILE_PATH);
-		if (audioelementsNodes == null) return;
+		if (audioelementsNodes == null)
+			return;
 
 		for (int i = 0; i < audioelementsNodes.getLength(); i++) {
-			if (audioelementsNodes.item(i).getNodeType() == Node.ELEMENT_NODE)   {
+			if (audioelementsNodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
 				Element audioElement = (Element) audioelementsNodes.item(i);
-				if (audioElement.getNodeName().equals("song")) 	{
+				if (audioElement.getNodeName().equals("song")) {
 					try {
-						AudioElement newSong = new Song (audioElement);
+						AudioElement newSong = new Song(audioElement);
 						this.addElement(newSong);
-					} catch (Exception ex) 	{
-						System.out.println ("Something is wrong with the XML song element");
+					} catch (Exception ex) {
+						System.out.println("Something is wrong with the XML song element");
 					}
 				}
-				if (audioElement.getNodeName().equals("audiobook")) 	{
+				if (audioElement.getNodeName().equals("audiobook")) {
 					try {
-						AudioElement newAudioBook = new AudioBook (audioElement);
+						AudioElement newAudioBook = new AudioBook(audioElement);
 						this.addElement(newAudioBook);
-					} catch (Exception ex) 	{
-						System.out.println ("Something is wrong with the XML audiobook element");
+					} catch (Exception ex) {
+						System.out.println("Something is wrong with the XML audiobook element");
 					}
 				}
 			}
 		}
 	}
 
-
-	public void saveAlbums () {
+	public void saveAlbums() {
 		Document document = xmlHandler.createXMLDocument();
-		if (document == null) return;
+		if (document == null)
+			return;
 
 		// root element
 		Element root = document.createElement("albums");
 		document.appendChild(root);
 
-		//save all albums
+		// save all albums
 		for (Iterator<Album> albumsIter = this.albums(); albumsIter.hasNext();) {
 			Album currentAlbum = albumsIter.next();
 			currentAlbum.createXMLElement(document, root);
@@ -296,15 +348,16 @@ public class MusicHub {
 		xmlHandler.createXMLFile(document, ALBUMS_FILE_PATH);
 	}
 
-	public void savePlayLists () {
+	public void savePlayLists() {
 		Document document = xmlHandler.createXMLDocument();
-		if (document == null) return;
+		if (document == null)
+			return;
 
 		// root element
 		Element root = document.createElement("playlists");
 		document.appendChild(root);
 
-		//save all playlists
+		// save all playlists
 		for (Iterator<PlayList> playlistsIter = this.playlists(); playlistsIter.hasNext();) {
 			PlayList currentPlayList = playlistsIter.next();
 			currentPlayList.createXMLElement(document, root);
@@ -314,24 +367,23 @@ public class MusicHub {
 
 	public void saveElements() {
 		Document document = xmlHandler.createXMLDocument();
-		if (document == null) return;
+		if (document == null)
+			return;
 
 		// root element
 		Element root = document.createElement("elements");
 		document.appendChild(root);
 
-		//save all AudioElements
+		// save all AudioElements
 		Iterator<AudioElement> elementsIter = elements.listIterator();
 		while (elementsIter.hasNext()) {
 
 			AudioElement currentElement = elementsIter.next();
-			if (currentElement instanceof Song)
-			{
-				((Song)currentElement).createXMLElement(document, root);
+			if (currentElement instanceof Song) {
+				((Song) currentElement).createXMLElement(document, root);
 			}
-			if (currentElement instanceof AudioBook)
-			{
-				((AudioBook)currentElement).createXMLElement(document, root);
+			if (currentElement instanceof AudioBook) {
+				((AudioBook) currentElement).createXMLElement(document, root);
 			}
 		}
 		xmlHandler.createXMLFile(document, ELEMENTS_FILE_PATH);
