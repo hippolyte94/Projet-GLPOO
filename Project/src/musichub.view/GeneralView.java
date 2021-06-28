@@ -1,4 +1,4 @@
-package view;
+package musichub.view;
 
 import java.util.Scanner;
 

@@ -1,7 +1,7 @@
 package musichub.model;
 
 import java.util.*;
-import musichub.util.*;
+import musichub.main.util.XMLHandler;
 import org.w3c.dom.*;
 
 class SortByDate implements Comparator<Album> {
@@ -34,9 +34,9 @@ public class MusicHub {
 	private List<AudioElement> elements;
 
 	public static final String DIR = System.getProperty("user.dir");
-	public static final String ALBUMS_FILE_PATH = DIR + "\\files\\albums.xml";
-	public static final String PLAYLISTS_FILE_PATH = DIR + "\\files\\playlists.xml";
-	public static final String ELEMENTS_FILE_PATH = DIR + "\\files\\elements.xml";
+	public static final String ALBUMS_FILE_PATH = DIR + "\\Project\\files\\albums.xml";
+	public static final String PLAYLISTS_FILE_PATH = DIR + "\\Project\\files\\playlists.xml";
+	public static final String ELEMENTS_FILE_PATH = DIR + "\\Project\\files\\elements.xml";
 
 	private XMLHandler xmlHandler = new XMLHandler();
 

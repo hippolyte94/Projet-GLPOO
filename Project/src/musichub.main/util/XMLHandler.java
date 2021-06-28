@@ -1,4 +1,4 @@
-package musichub.util;
+package musichub.main.util;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

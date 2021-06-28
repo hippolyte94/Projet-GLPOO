@@ -1,8 +1,5 @@
-package view;
+package musichub.view;
 
-import musichub.business.AudioElement;
-import musichub.business.MusicHub;
-import musichub.business.Song;
 
 import java.util.Iterator;
 import java.util.Scanner;

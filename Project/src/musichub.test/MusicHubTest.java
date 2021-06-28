@@ -42,11 +42,10 @@ class MusicHubTest {
 		musicHubAfterDelete.deletePlayList("ZEN");
 		
 		// On supprime un element et on comprare la taille de la playlist de base et celle de la 
-		// playlist avec un son enlevé.
+		// playlist avec un son enlevï¿½.
 		assertEquals(musichub.getPlaylists().size()-1, musicHubAfterDelete.getPlaylists().size());
 	}
 	
-	@Test
-	void 
+
 
 }

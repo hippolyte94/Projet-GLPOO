@@ -1,4 +1,4 @@
-package musichub.main;
+package musichub.main.main;
 
 import musichub.controller.MainController;
 

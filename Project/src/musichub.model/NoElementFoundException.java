@@ -1,4 +1,6 @@
-package musichub.business;
+package musichub.model;
+
+import java.lang.Exception;
 
 public class NoElementFoundException extends Exception {
 
