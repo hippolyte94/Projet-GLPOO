@@ -1,8 +1,8 @@
-package controller;
+package musichub.controller;
 
-import musichub.business.MusicHub;
-import musichub.business.Song;
-import view.SongView;
+import musichub.model.MusicHub;
+import musichub.model.Song;
+import musichub.view.SongView;
 
 public class SongController  {
 
@@ -20,7 +20,12 @@ public class SongController  {
         addElementToHub(songValues);
     }
 
-    private void addElementToHub(String[] songValues) {
-        theHub.addElement(new Song(songValues[0], songValues[1], Integer.parseInt(songValues[3]), songValues[2], songValues[4]));
+    public boolean addElementToHub(String[] songValues) {
+       if (songValues!= null) {
+    	   theHub.addElement(new Song(songValues[0], songValues[1], Integer.parseInt(songValues[3]), songValues[2], songValues[4]));
+    	   return true;
+       }
+       return false;
+       
     }
 }
