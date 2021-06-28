@@ -26,7 +26,7 @@ public class AudioPlayer {
 
 	public void loadAudio(){
 		try{
-			File file = new File("C:\\Users\\david\\IdeaProjects\\Projet-GLPOO\\Project\\files\\audios\\44136020-dc80-4522-9b71-2b9aad5e3039.wav");
+			File file = new File(filePath);
 			audioIS = AudioSystem.getAudioInputStream(file.getAbsoluteFile());
 
 			clip = AudioSystem.getClip();

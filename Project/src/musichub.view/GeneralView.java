@@ -26,6 +26,7 @@ public abstract class GeneralView {
         System.out.println("g: display songs of an album, ordered by genre");
         System.out.println("d: display songs of an album");
         System.out.println("u: display audiobooks ordered by author");
+        System.out.println("r: play a song");
         System.out.println("c: add a new song");
         System.out.println("a: add a new album");
         System.out.println("+: add a song to an album");
