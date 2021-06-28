@@ -3,7 +3,7 @@ package musichub.model;
 import java.util.*;
 import org.w3c.dom.*;
 import java.text.*;
-
+import musichub.logger.*;
 
 
 public class Album {
@@ -24,7 +24,7 @@ public class Album {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			this.date = sdf.parse(date);
 		} catch (ParseException ex) {
-			ex.printStackTrace();
+			Logging.fatal("Error occured : " + ex.getMessage());
 		}
 		this.songsUIDs = songsUIDs;
 	}
@@ -38,7 +38,8 @@ public class Album {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			this.date = sdf.parse(date);
 		} catch (ParseException ex) {
-			ex.printStackTrace();
+			Logging.fatal("Error occured : " + ex.getMessage());
+
 		}
 		this.songsUIDs = new ArrayList<UUID>();
 	}
@@ -80,6 +81,7 @@ public class Album {
 				} 
 			}
 		} catch (Exception ex) {
+			Logging.fatal("Error occured : " + ex.getMessage());
 			throw ex;
 		}
 	}

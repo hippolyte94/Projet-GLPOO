@@ -1,0 +1,88 @@
+juin 28, 2021 2:59:53 PM musichub.logger.Logging setUpLogger
+INFOS: My First Log
+juin 28, 2021 3:01:16 PM musichub.logger.Logging setUpLogger
+INFOS: My First Log
+juin 28, 2021 3:14:16 PM musichub.logger.Logging setUpLogger
+INFOS: JMusicHub Started
+juin 28, 2021 3:14:19 PM musichub.logger.Logging log
+INFOS: Choose h Option
+juin 28, 2021 3:14:20 PM musichub.logger.Logging log
+INFOS: Choose q Option
+juin 28, 2021 3:14:20 PM musichub.logger.Logging log
+INFOS: Exit Program : Status 0
+juin 28, 2021 4:53:27 PM musichub.logger.Logging setUpLogger
+INFOS: JMusicHub Started
+juin 28, 2021 4:53:29 PM musichub.logger.Logging log
+INFOS: Choose h Option
+juin 28, 2021 4:53:32 PM musichub.logger.Logging log
+INFOS: Choose s Option
+juin 28, 2021 4:53:34 PM musichub.logger.Logging log
+INFOS: Choose h Option
+juin 28, 2021 4:53:36 PM musichub.logger.Logging log
+INFOS: Choose a Option
+juin 28, 2021 4:53:38 PM musichub.logger.Logging log
+INFOS: test
+juin 28, 2021 4:53:39 PM musichub.logger.Logging log
+INFOS: test
+juin 28, 2021 4:53:42 PM musichub.logger.Logging log
+INFOS: 58
+juin 28, 2021 4:53:49 PM musichub.logger.Logging log
+INFOS: 1212-12-12
+juin 28, 2021 4:53:57 PM musichub.logger.Logging log
+INFOS: Choose s Option
+juin 28, 2021 4:55:04 PM musichub.logger.Logging setUpLogger
+INFOS: JMusicHub Started
+juin 28, 2021 4:55:06 PM musichub.logger.Logging log
+INFOS: Choose h Option
+juin 28, 2021 4:55:10 PM musichub.logger.Logging log
+INFOS: Choose t Option
+juin 28, 2021 5:01:35 PM musichub.logger.Logging log
+INFOS: Choose q Option
+juin 28, 2021 5:01:35 PM musichub.logger.Logging log
+INFOS: Exit Program : Status 0
+juin 28, 2021 5:04:03 PM musichub.logger.Logging setUpLogger
+INFOS: JMusicHub Started
+juin 28, 2021 5:04:06 PM musichub.logger.Logging log
+INFOS: Choose h Option
+juin 28, 2021 5:04:09 PM musichub.logger.Logging log
+INFOS: Choose t Option
+juin 28, 2021 5:04:10 PM musichub.logger.Logging log
+INFOS: Choose q Option
+juin 28, 2021 5:04:10 PM musichub.logger.Logging log
+INFOS: Exit Program : Status 0
+juin 28, 2021 5:04:36 PM musichub.logger.Logging setUpLogger
+INFOS: JMusicHub Started
+juin 28, 2021 5:04:38 PM musichub.logger.Logging log
+INFOS: Choose h Option
+juin 28, 2021 5:04:46 PM musichub.logger.Logging log
+INFOS: Choose a Option
+juin 28, 2021 5:04:48 PM musichub.logger.Logging log
+INFOS: test
+juin 28, 2021 5:04:50 PM musichub.logger.Logging log
+INFOS: test
+juin 28, 2021 5:04:53 PM musichub.logger.Logging log
+INFOS: 20
+juin 28, 2021 5:04:59 PM musichub.logger.Logging log
+INFOS: 1212-04-12
+juin 28, 2021 5:05:04 PM musichub.logger.Logging log
+INFOS: Choose q Option
+juin 28, 2021 5:05:04 PM musichub.logger.Logging log
+INFOS: Exit Program : Status 0
+juin 28, 2021 5:06:16 PM musichub.logger.Logging setUpLogger
+INFOS: JMusicHub Started
+juin 28, 2021 5:06:18 PM musichub.logger.Logging log
+INFOS: Choose h Option
+juin 28, 2021 5:06:19 PM musichub.logger.Logging log
+INFOS: Choose a Option
+juin 28, 2021 5:06:21 PM musichub.logger.Logging log
+INFOS: test
+juin 28, 2021 5:06:22 PM musichub.logger.Logging log
+INFOS: test
+juin 28, 2021 5:06:26 PM musichub.logger.Logging log
+INFOS: 23
+juin 28, 2021 5:06:29 PM musichub.logger.Logging log
+INFOS: 1212-02-12
+juin 28, 2021 5:06:31 PM musichub.logger.Logging log
+INFOS: Choose q Option
+juin 28, 2021 5:06:31 PM musichub.logger.Logging log
+INFOS: Exit Program : Status 0

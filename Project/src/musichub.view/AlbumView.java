@@ -13,7 +13,7 @@ public class AlbumView extends GeneralView {
 
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
-	String choice = scan.nextLine();
+	String choice;
 	MusicHub theHub = new MusicHub();
 
 
@@ -57,13 +57,11 @@ public class AlbumView extends GeneralView {
 	}
 
 	public void showsAlbums() {
-
 		System.out.println("New list of albums: ");
 		Iterator<Album> ita = theHub.albums();
 		while (ita.hasNext()) System.out.println(ita.next().getTitle());
 		System.out.println("Album created!");
 		printAvailableCommands();
-		choice = scan.nextLine();
 	}
 
 	public void newSongToAlbumAdded() {

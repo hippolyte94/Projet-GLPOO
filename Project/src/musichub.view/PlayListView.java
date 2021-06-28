@@ -12,7 +12,6 @@ public class PlayListView extends GeneralView{
 
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
-	String choice = scan.nextLine();
 	MusicHub theHub = new MusicHub();
 
 	public void displayAvailableElements() {
@@ -25,6 +24,7 @@ public class PlayListView extends GeneralView{
 	}
 
 	public void isDeleted() {
+		String choice = scan.nextLine();
 		System.out.println("Playlist deleted!");
 		printAvailableCommands();
 		choice = scan.nextLine();

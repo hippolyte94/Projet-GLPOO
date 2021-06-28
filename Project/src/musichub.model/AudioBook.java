@@ -2,6 +2,7 @@ package musichub.model;
 
 import java.io.*;
 import org.w3c.dom.*;
+import musichub.logger.*;
 
 public class AudioBook extends AudioElement {
 	private Language language;
@@ -24,6 +25,7 @@ public class AudioBook extends AudioElement {
 			this.setLanguage(xmlElement.getElementsByTagName("language").item(0).getTextContent());
 			this.setCategory(xmlElement.getElementsByTagName("category").item(0).getTextContent());
 		} catch (Exception ex) {
+			Logging.fatal("Error occured : " + ex.getMessage());
 			throw ex;
 		}
 	}
@@ -100,6 +102,5 @@ public class AudioBook extends AudioElement {
         audioBook.appendChild(categoryElement);
 		
 		parentElement.appendChild(audioBook);
-		return;
 	}
 }

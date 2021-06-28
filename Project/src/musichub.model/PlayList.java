@@ -2,6 +2,7 @@ package musichub.model;
 
 import java.util.*;
 import org.w3c.dom.*;
+import musichub.logger.*;
 
 public class PlayList {
 	private String title;
@@ -42,6 +43,8 @@ public class PlayList {
 				uuid = xmlElement.getElementsByTagName("UUID").item(0).getTextContent();
 			}
 			catch (Exception ex) {
+				Logging.fatal("Error occured : " + ex.getMessage());
+
 				System.out.println ("Empty playlist UUID, will create a new one");
 			}
 			if ((uuid == null)  || (uuid.isEmpty()))
@@ -63,12 +66,15 @@ public class PlayList {
 						try {
 							this.addElement(UUID.fromString(elementElement.getTextContent()));
 						} catch (Exception ex) {
-							ex.printStackTrace();
+							Logging.fatal("Error occured : " + ex.getMessage());
+
 						}
 					}
 				} 
 			}
 		} catch (Exception ex) {
+			Logging.fatal("Error occured : " + ex.getMessage());
+
 			throw ex;
 		}
 	}
