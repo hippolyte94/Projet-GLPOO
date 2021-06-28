@@ -2,21 +2,20 @@ package musichub.model;
 
 import javax.sound.sampled.*;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import musichub.logger.*;
+import musichub.main.main.Main;
 
 public class AudioPlayer {
 
 	Long timeLine;
 	Clip clip;
-
 	String status;
 	AudioInputStream audioIS;
 	private String filePath;
 
-	public AudioPlayer(String filePath) {
-		this.filePath = filePath;
-
+	public AudioPlayer() {
 	}
 
 
@@ -25,10 +24,10 @@ public class AudioPlayer {
 		loadAudio();
 	}
 
-	private void loadAudio(){
-
+	public void loadAudio(){
 		try{
-			audioIS = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
+			File file = new File("C:\\Users\\david\\IdeaProjects\\Projet-GLPOO\\Project\\files\\audios\\44136020-dc80-4522-9b71-2b9aad5e3039.wav");
+			audioIS = AudioSystem.getAudioInputStream(file.getAbsoluteFile());
 
 			clip = AudioSystem.getClip();
 
@@ -38,7 +37,6 @@ public class AudioPlayer {
 		}catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex){
 			Logging.fatal(ex.getMessage());
 		}
-
 	}
 
 	public void play(){
@@ -51,12 +49,13 @@ public class AudioPlayer {
 		if (status.equals("paused"))
 		{
 			System.out.println("L'audio est deja en pause");
-			return;
+
+		}else {
+			this.timeLine =
+					this.clip.getMicrosecondPosition();
+			clip.stop();
+			status = "paused";
 		}
-		this.timeLine =
-				this.clip.getMicrosecondPosition();
-		clip.stop();
-		status = "paused";
 	}
 
 	public void restart() throws IOException, LineUnavailableException,UnsupportedAudioFileException

@@ -14,9 +14,9 @@ public class AlbumView extends GeneralView {
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
 	String choice;
-
+	MusicHub theHub;
 	public AlbumView(MusicHub theHub) {
-		super(theHub);
+		this.theHub = theHub;
 	}
 
 	public void albumOrderedByDate() {
@@ -30,10 +30,10 @@ public class AlbumView extends GeneralView {
 
 		System.out.println(
 				"Songs of an album sorted by genre will be displayed; enter the album name, available albums are:");
-		System.out.println(theHub.getAlbumsTitlesSortedByDate());
+		System.out.println(this.theHub.getAlbumsTitlesSortedByDate());
 		albumTitle = scan.nextLine();
 		try {
-			System.out.println(theHub.getAlbumSongsSortedByGenre(albumTitle));
+			System.out.println(this.theHub.getAlbumSongsSortedByGenre(albumTitle));
 		} catch (NoAlbumFoundException ex) {
 			System.out.println("No album found with the requested title " + ex.getMessage());
 		}

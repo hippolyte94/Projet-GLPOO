@@ -26,7 +26,7 @@ public class AudioPlayerController {
 	public AudioPlayerController(MusicHub theHub) {
 		this.theHub = theHub;
 		audioPlayerView = new AudioPlayerView(theHub);
-
+		audioPlayer = new AudioPlayer();
 	}
 
 	public Song chooseMusicToPlay() {
@@ -51,37 +51,38 @@ public class AudioPlayerController {
 
 	public void controlPlayer(){
 		Song song = chooseMusicToPlay();
+		//jetbrains://idea/navigate/reference?project=Projet-GLPOO&path=Project/files/audios/44136020-dc80-4522-9b71-2b9aad5e3039.wav
 		audioPlayer.setAudioPath(System.getProperty("user.dir")+"\\Project\\files\\audios\\"+song.getUUID()+".wav");
+		audioPlayer.play();
 		audioPlayerView.showChoices();
 		String choice = sc.nextLine();
-		while(choice.charAt(0) != '9'){
-			try {
-				switch (choice.charAt(0)) {
-					case '1':
-						audioPlayer.pause();
-						break;
-					case '2':
-						audioPlayer.resumeAudio();
-						break;
-					case '3':
-						audioPlayer.restart();
-						break;
-					case '4':
-						audioPlayer.stop();
-						break;
-					case '5':
-						System.out.println("Enter time (" + 0 +
-								", " + audioPlayer.getClip().getMicrosecondLength() + ")");
-						long c1 = sc.nextLong();
-						audioPlayer.jump(c1);
-						break;
+		while(choice.charAt(0) != 'q'){
+			switch (choice.charAt(0)) {
+				case '1':
+					System.out.println("Not Implemented Yet");
+					break;
+				case '2':
+					System.out.println("Not Implemented Yet");
+					break;
+				case '3':
+					System.out.println("Not Implemented Yet");
+					break;
+				case '4':
+					audioPlayer.stop();
+					break;
+				case '5':
+					System.out.println("Not Implemented Yet");
+					break;
+				default:
+					audioPlayer.stop();
+					break;
 
-				}
-			} catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
-			Logging.fatal(e.getMessage());
 			}
-		}
+			audioPlayerView.showChoices();
+			choice = sc.nextLine();
 
+		}
+		audioPlayerView.printAvailableCommands();
 	}
 
 

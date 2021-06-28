@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 
 public class PlayListView extends GeneralView{
-
+	private MusicHub theHub;
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
 
 	public PlayListView(MusicHub theHub) {
-		super(theHub);
+		this.theHub = theHub;
 	}
 
 	public void displayAvailableElements() {

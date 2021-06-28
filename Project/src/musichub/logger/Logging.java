@@ -7,16 +7,23 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-
+/*
+Design pattern Singleton
+*/
 public class Logging {
 
-	private FileHandler fh;
+
 	final static Logger logger = Logger.getLogger(Main.class.getName());
 	public Logging() {
 		setUpLogger();
 	}
+	private static Logging INSTANCE = new Logging();
+	private static FileHandler fh;
+	public static Logging getInstance(){
 
-	private void setUpLogger(){
+		return INSTANCE;
+	}
+	private static void setUpLogger(){
 		logger.setLevel(Level.ALL);
 
 		logger.setUseParentHandlers(false);
@@ -26,11 +33,12 @@ public class Logging {
 			logger.addHandler(fh);
 			SimpleFormatter formatter = new SimpleFormatter();
 			fh.setFormatter(formatter);
+			logger.info("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
 			logger.info("JMusicHub Started");
 
 		}catch (SecurityException | IOException e){
 			logger.severe(e.getMessage());
-			close();
+
 		}
 
 	}

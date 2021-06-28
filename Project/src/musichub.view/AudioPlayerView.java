@@ -6,13 +6,14 @@ import musichub.model.Song;
 import java.util.List;
 
 public class AudioPlayerView extends GeneralView{
+	private MusicHub theHub;
 
 	public AudioPlayerView(MusicHub theHub) {
-		super(theHub);
+		this.theHub = theHub;
 	}
 
 	public void showAlbumList() {
-		System.out.println(theHub.getAlbumsTitlesSortedByArtists());
+		System.out.println(theHub.getAlbumsTitlesSortedByDate());
 		System.out.println("Choose an album by taping his title");
 	}
 
@@ -30,6 +31,7 @@ public class AudioPlayerView extends GeneralView{
 		System.out.println("3. restart");
 		System.out.println("4. stop");
 		System.out.println("5. Jump to specific time");
+		System.out.println("q. to quit");
 
 	}
 }

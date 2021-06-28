@@ -8,8 +8,10 @@ import java.util.Scanner;
 
 public class SongView extends GeneralView {
 
+    private MusicHub theHub;
+
     public SongView(MusicHub theHub) {
-        super(theHub);
+       this.theHub = theHub;
     }
 
     Scanner scan = new Scanner(System.in);

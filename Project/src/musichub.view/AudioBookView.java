@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 
 public class AudioBookView extends GeneralView{
-
+	private MusicHub theHub;
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
 
 	public AudioBookView(MusicHub theHub) {
-		super(theHub);
+		this.theHub = theHub;
 	}
 
 	String choice;

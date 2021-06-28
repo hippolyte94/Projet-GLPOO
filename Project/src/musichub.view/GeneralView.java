@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public abstract class GeneralView {
 
-    protected MusicHub theHub;
 
-    public GeneralView(MusicHub theHub) {
-        this.theHub = theHub;
+
+    public GeneralView() {
+
     }
 
     protected void printHelp() {
