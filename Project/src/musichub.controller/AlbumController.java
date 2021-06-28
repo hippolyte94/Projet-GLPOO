@@ -24,7 +24,7 @@ public class AlbumController {
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
 
-	AlbumView viewAlbum = new AlbumView();
+	AlbumView viewAlbum = new AlbumView(theHub);
 
 	public void addNewAlbum() {
 		System.out.println("Enter a new album: ");
@@ -42,7 +42,7 @@ public class AlbumController {
 		Logging.log(aDate);
 		Album a = new Album(aTitle, aArtist, aLength, aDate);
 		theHub.addAlbum(a);
-		viewAlbum.showsAlbums();
+		viewAlbum.showsAlbums(theHub.albums());
 	}
 
 	public void addSongToAalbum() {

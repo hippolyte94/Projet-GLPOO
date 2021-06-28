@@ -1,10 +1,16 @@
 package musichub.view;
 
 
+import musichub.model.MusicHub;
+
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class SongView extends GeneralView {
+
+    public SongView(MusicHub theHub) {
+        super(theHub);
+    }
 
     Scanner scan = new Scanner(System.in);
     //String choice = scan.nextLine();

@@ -19,7 +19,7 @@ public class PlayListController {
 	
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
-	PlayListView playListView = new PlayListView();
+	PlayListView playListView = new PlayListView(theHub);
 	
 	public void createNewPlaylist() {
 		Logging.log("Creating new PlayList");

@@ -86,3 +86,9 @@ juin 28, 2021 5:06:31 PM musichub.logger.Logging log
 INFOS: Choose q Option
 juin 28, 2021 5:06:31 PM musichub.logger.Logging log
 INFOS: Exit Program : Status 0
+juin 28, 2021 9:28:53 PM musichub.logger.Logging setUpLogger
+INFOS: JMusicHub Started
+juin 28, 2021 9:28:56 PM musichub.logger.Logging log
+INFOS: Choose q Option
+juin 28, 2021 9:28:56 PM musichub.logger.Logging log
+INFOS: Exit Program : Status 0

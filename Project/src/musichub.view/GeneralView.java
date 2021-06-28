@@ -1,9 +1,16 @@
 package musichub.view;
 
+import musichub.model.MusicHub;
+
 import java.util.Scanner;
 
 public abstract class GeneralView {
 
+    protected MusicHub theHub;
+
+    public GeneralView(MusicHub theHub) {
+        this.theHub = theHub;
+    }
 
     protected void printHelp() {
         Scanner scan = new Scanner(System.in);

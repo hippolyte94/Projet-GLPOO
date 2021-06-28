@@ -17,7 +17,7 @@ public class AudioBookController {
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
 
-	AudioBookView audioBookView = new AudioBookView();
+	AudioBookView audioBookView = new AudioBookView(theHub);
 	
 	public void addNewAudioBook() {
 		 System.out.println("Enter a new audiobookLogging");

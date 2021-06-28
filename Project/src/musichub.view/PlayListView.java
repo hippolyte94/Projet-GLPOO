@@ -12,7 +12,10 @@ public class PlayListView extends GeneralView{
 
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
-	MusicHub theHub = new MusicHub();
+
+	public PlayListView(MusicHub theHub) {
+		super(theHub);
+	}
 
 	public void displayAvailableElements() {
 		System.out.println("Available elements: ");

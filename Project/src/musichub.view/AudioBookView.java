@@ -12,7 +12,11 @@ public class AudioBookView extends GeneralView{
 
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
-	MusicHub theHub = new MusicHub();
+
+	public AudioBookView(MusicHub theHub) {
+		super(theHub);
+	}
+
 	String choice;
 	public void getAudiobooksTitlesSortedByAuthor() {
 

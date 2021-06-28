@@ -17,6 +17,7 @@ public class MainController {
 	private GeneralView generalView;
 	private MusicHub theHub;
 	private Logging logger;
+	private AudioPlayerController audioPlayerController;
 
 
 	public MainController() {
@@ -25,13 +26,8 @@ public class MainController {
 		this.audioBookCont = new AudioBookController(theHub);
 		this.playListCont = new PlayListController(theHub);
 		this.songCont = new SongController(theHub); // rajouter music hub
-		this.generalView = new GeneralView() {
-
-			@Override
-			protected void tellIfAdded(boolean bool) {
-
-			}
-		};
+		this.audioPlayerController = new AudioPlayerController(theHub);
+		this.generalView = new GeneralView(theHub) { @Override protected void tellIfAdded(boolean bool) {} };
 		logger = new Logging();
 	}
 
@@ -70,6 +66,10 @@ public class MainController {
 			case 'b':
 				Logging.log("Choose b Option");
 				theHub.getAlbumsTitlesSortedByArtists();
+				break;
+			case  'r': // Play Music
+				Logging.log("Choose r Option");
+				audioPlayerController.chooseMusicToPlay();
 				break;
 			case 'c':
 				Logging.log("Choose c Option");
@@ -112,7 +112,6 @@ public class MainController {
 			}
 			choice = scan.nextLine();
 		}
-		System.out.println("test");
 		Logging.log("Choose q Option");
 		Logging.log("Exit Program : Status 0");
 		scan.close();
