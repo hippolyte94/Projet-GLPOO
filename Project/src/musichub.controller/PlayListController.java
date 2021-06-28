@@ -12,15 +12,15 @@ import java.util.Scanner;
 public class PlayListController {
 	
 	private MusicHub theHub ;
-
+	private PlayListView playListView;
 	public PlayListController(MusicHub theHub) {
 		this.theHub = theHub;
+		playListView = new PlayListView(theHub);
 	}
 	
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
-	PlayListView playListView = new PlayListView();
-	
+
 	public void createNewPlaylist() {
 		Logging.log("Creating new PlayList");
 

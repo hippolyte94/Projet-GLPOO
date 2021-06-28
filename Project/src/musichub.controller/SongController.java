@@ -12,7 +12,7 @@ public class SongController  {
 
     public SongController(MusicHub theHub ) {
         this.theHub = theHub;
-        songView = new SongView();
+        songView = new SongView(theHub);
     }
 
 

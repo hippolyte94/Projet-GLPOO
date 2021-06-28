@@ -9,10 +9,14 @@ import java.util.Scanner;
 
 
 public class AudioBookView extends GeneralView{
-
+	private MusicHub theHub;
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
-	MusicHub theHub = new MusicHub();
+
+	public AudioBookView(MusicHub theHub) {
+		this.theHub = theHub;
+	}
+
 	String choice;
 	public void getAudiobooksTitlesSortedByAuthor() {
 

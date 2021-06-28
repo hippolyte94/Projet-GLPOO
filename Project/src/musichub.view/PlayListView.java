@@ -9,10 +9,13 @@ import java.util.Scanner;
 
 
 public class PlayListView extends GeneralView{
-
+	private MusicHub theHub;
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
-	MusicHub theHub = new MusicHub();
+
+	public PlayListView(MusicHub theHub) {
+		this.theHub = theHub;
+	}
 
 	public void displayAvailableElements() {
 		System.out.println("Available elements: ");

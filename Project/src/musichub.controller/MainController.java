@@ -17,6 +17,7 @@ public class MainController {
 	private GeneralView generalView;
 	private MusicHub theHub;
 	private Logging logger;
+	private AudioPlayerController audioPlayerController;
 
 
 	public MainController() {
@@ -25,13 +26,8 @@ public class MainController {
 		this.audioBookCont = new AudioBookController(theHub);
 		this.playListCont = new PlayListController(theHub);
 		this.songCont = new SongController(theHub); // rajouter music hub
-		this.generalView = new GeneralView() {
-
-			@Override
-			protected void tellIfAdded(boolean bool) {
-
-			}
-		};
+		this.audioPlayerController = new AudioPlayerController(theHub);
+		this.generalView = new GeneralView() { @Override protected void tellIfAdded(boolean bool) {} };
 		logger = new Logging();
 	}
 
@@ -57,9 +53,10 @@ public class MainController {
 			case 'g':
 				// songs of an album, sorted by genre
 				Logging.log("Choose g Option");
+				System.out.println(theHub.getAlbumsTitlesSortedByDate());
 				albumCont.displayAlbumSongOrderedBygenre();
 				break;
-				case 'd':
+			case 'd':
 				Logging.log("Choose d Option");
 				albumCont.displayAllSong();
 				break;
@@ -70,6 +67,10 @@ public class MainController {
 			case 'b':
 				Logging.log("Choose b Option");
 				theHub.getAlbumsTitlesSortedByArtists();
+				break;
+			case  'r': // Play Music
+				Logging.log("Choose r Option");
+				audioPlayerController.controlPlayer();
 				break;
 			case 'c':
 				Logging.log("Choose c Option");
@@ -104,15 +105,15 @@ public class MainController {
 
 			case 's':
 				Logging.log("Choose s Option");
-
-				// generalView.save();
+				theHub.saveAlbums();
+				theHub.savePlayLists();
+				theHub.saveElements();
 				break;
 			default:
 				break;
 			}
 			choice = scan.nextLine();
 		}
-		System.out.println("test");
 		Logging.log("Choose q Option");
 		Logging.log("Exit Program : Status 0");
 		scan.close();

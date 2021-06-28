@@ -16,15 +16,15 @@ import musichub.logger.*;
 public class AlbumController {
 
 	private MusicHub theHub;
-
+	private AlbumView viewAlbum;
 	public AlbumController(MusicHub theHub) {
 		this.theHub = theHub;
+		viewAlbum = new AlbumView(theHub);
 	}
 
 	Scanner scan = new Scanner(System.in);
 	String albumTitle = null;
 
-	AlbumView viewAlbum = new AlbumView();
 
 	public void addNewAlbum() {
 		System.out.println("Enter a new album: ");
@@ -42,7 +42,7 @@ public class AlbumController {
 		Logging.log(aDate);
 		Album a = new Album(aTitle, aArtist, aLength, aDate);
 		theHub.addAlbum(a);
-		viewAlbum.showsAlbums();
+		viewAlbum.showsAlbums(theHub.albums());
 	}
 
 	public void addSongToAalbum() {
